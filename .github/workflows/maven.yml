@@ -24,7 +24,9 @@ jobs:
       - name: Check formatting
         uses: axel-op/googlejavaformat-action@v3
         with:
-          args: "--check" # Vérifie sans modifier les fichiers
+        # --dry-run : affiche les fichiers qui devraient changer
+        # --set-exit-if-changed : renvoie une erreur (code 1) si un changement est nécessaire
+          args: "--dry-run --set-exit-if-changed"
 
       # Étape 1a: Lancement des tests
       - name: Build and Test with Maven
