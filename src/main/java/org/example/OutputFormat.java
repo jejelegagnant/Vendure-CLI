@@ -1,3 +1,6 @@
 package org.example;
 
-public enum OutputFormat { TABLE, JSON }
+public enum OutputFormat {
+  TABLE,
+  JSON
+}
