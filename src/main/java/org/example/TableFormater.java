@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.List;
+import java.util.Locale;
 
 public class TableFormater implements Formater {
 
@@ -17,8 +18,9 @@ public class TableFormater implements Formater {
     sb.append("-----------------------------------\n");
 
     // Lignes de données
+    Locale swissFrenchLocale = Locale.of("fr", "CH");
     for (Product p : products) {
-      sb.append(String.format("%-20s | %.2f CHF\n", p.name(), p.price()));
+      sb.append(String.format(swissFrenchLocale, "%-20s | %.2f CHF\n", p.name(), p.price()));
     }
 
     return sb.toString();
