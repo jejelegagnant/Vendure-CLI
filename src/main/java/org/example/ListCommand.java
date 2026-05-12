@@ -25,6 +25,13 @@ public class ListCommand implements SubCommand {
   }
 
   List<Product> fetchProducts(String url) {
-    return List.of(new Product("Clavier", 45.0));
+    // 1. Client is in CommandParser
+    VendureClient client = parent.getClient();
+
+    // 2. Prepare the query
+    ProductListQuery query = new ProductListQuery();
+
+    // 3. Exécution : client handles the query and delegates
+    return client.execute(query);
   }
 }

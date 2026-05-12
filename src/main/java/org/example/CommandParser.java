@@ -15,6 +15,8 @@ public class CommandParser {
       scope = CommandLine.ScopeType.INHERIT)
   private String url;
 
+  private VendureClient client;
+
   public SubCommand parse(String[] args, String envurl) {
     CommandLine commandLine = new CommandLine(this);
     CommandLine.ParseResult result = commandLine.parseArgs(args);
@@ -31,5 +33,12 @@ public class CommandParser {
 
   public String getUrl() {
     return url;
+  }
+
+  public VendureClient getClient() {
+    if (client == null) {
+      client = new VendureClient(url);
+    }
+    return client;
   }
 }
