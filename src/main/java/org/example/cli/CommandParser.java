@@ -1,5 +1,6 @@
-package org.example;
+package org.example.cli;
 
+import org.example.graphql.VendureClient;
 import picocli.CommandLine;
 
 @CommandLine.Command(

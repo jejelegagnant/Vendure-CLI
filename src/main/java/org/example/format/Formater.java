@@ -1,4 +1,6 @@
-package org.example;
+package org.example.format;
+
+import org.example.model.Product;
 
 import java.util.List;
 

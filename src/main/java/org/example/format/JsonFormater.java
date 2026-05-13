@@ -1,6 +1,8 @@
-package org.example;
+package org.example.format;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.model.Product;
+
 import java.util.List;
 
 public class JsonFormater implements Formater {

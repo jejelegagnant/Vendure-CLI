@@ -1,6 +1,14 @@
-package org.example;
+package org.example.cli;
 
 import java.util.List;
+
+import org.example.format.Formater;
+import org.example.format.JsonFormater;
+import org.example.format.OutputFormat;
+import org.example.format.TableFormater;
+import org.example.graphql.ProductListQuery;
+import org.example.graphql.VendureClient;
+import org.example.model.Product;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "list", description = "Display the list of available products")

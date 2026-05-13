@@ -1,8 +1,9 @@
-package org.example;
+package org.example.cli;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class CartCommandTest {

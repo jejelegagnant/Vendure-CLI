@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.cli.CommandParser;
+import org.example.cli.SubCommand;
+
 public class Main {
   static void main(String[] args) {
     try {

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.graphql;
 
 public interface GraphQLQuery<T> {
   String getQueryPayload();
