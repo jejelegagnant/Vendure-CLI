@@ -17,7 +17,8 @@ public class ProductDetailQuery implements GraphQLQuery<ProductDetails> {
   @Override
   public String getQueryPayload() {
     return String.format(
-        "{ \"query\": \"query { product(slug: \\\"%s\\\") { id name description variants { sku name price stockLevel } } }\" }",
+        "{ \"query\": \"query { product(slug: \\\"%s\\\") { id name description variants { sku name price"
+            + " stockLevel } } }\" }",
         slug);
   }
 

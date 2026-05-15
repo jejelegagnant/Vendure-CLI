@@ -13,7 +13,8 @@ public class ProductDetailQueryTest {
 
     // Verify that the slug is at the right place
     String expected =
-        "{ \"query\": \"query { product(slug: \\\"aloe-vera\\\") { id name description variants { sku name price stockLevel } } }\" }";
+        "{ \"query\": \"query { product(slug: \\\"aloe-vera\\\") { id name description variants { sku name"
+            + " price stockLevel } } }\" }";
     assertEquals(expected, query.getQueryPayload());
   }
 
