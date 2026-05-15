@@ -2,10 +2,9 @@ package org.example.graphql;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.model.Product;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.example.model.Product;
 
 public class ProductListQuery implements GraphQLQuery<List<Product>> {
 

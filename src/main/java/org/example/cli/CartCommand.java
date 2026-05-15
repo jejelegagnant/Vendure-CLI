@@ -2,7 +2,6 @@ package org.example.cli;
 
 import java.util.Collections;
 import java.util.List;
-
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "cart", description = "display the user's cart")

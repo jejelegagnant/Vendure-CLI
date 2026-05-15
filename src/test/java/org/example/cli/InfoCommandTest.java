@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
-
 import org.example.graphql.GraphQLQuery;
 import org.example.graphql.VendureClient;
 import org.example.model.ProductDetails;

@@ -1,7 +1,6 @@
 package org.example.cli;
 
 import java.util.List;
-
 import org.example.format.Formater;
 import org.example.format.JsonFormater;
 import org.example.format.OutputFormat;

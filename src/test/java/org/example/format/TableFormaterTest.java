@@ -3,7 +3,6 @@ package org.example.format;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-
 import org.example.model.Product;
 import org.junit.jupiter.api.Test;
 

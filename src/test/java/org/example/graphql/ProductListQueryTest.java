@@ -2,8 +2,8 @@ package org.example.graphql;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.example.model.Product;
 import java.util.List;
+import org.example.model.Product;
 import org.junit.jupiter.api.Test;
 
 public class ProductListQueryTest {

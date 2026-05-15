@@ -1,7 +1,7 @@
 package org.example.format;
 
-import org.example.model.ProductDetails;
 import java.util.Locale;
+import org.example.model.ProductDetails;
 
 public class ProductDetailsFormater implements Formater<ProductDetails> {
 

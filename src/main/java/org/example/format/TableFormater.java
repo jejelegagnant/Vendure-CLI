@@ -1,9 +1,8 @@
 package org.example.format;
 
-import org.example.model.Product;
-
 import java.util.List;
 import java.util.Locale;
+import org.example.model.Product;
 
 public class TableFormater implements Formater<List<Product>> {
 
