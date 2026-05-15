@@ -5,7 +5,7 @@ import org.example.model.Product;
 import java.util.List;
 import java.util.Locale;
 
-public class TableFormater implements Formater {
+public class TableFormater implements Formater<List<Product>> {
 
   @Override
   public String format(List<Product> products) {

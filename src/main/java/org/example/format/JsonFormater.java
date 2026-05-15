@@ -5,7 +5,7 @@ import org.example.model.Product;
 
 import java.util.List;
 
-public class JsonFormater implements Formater {
+public class JsonFormater implements Formater<List<Product>> {
 
   private static final ObjectMapper mapper = new ObjectMapper();
 

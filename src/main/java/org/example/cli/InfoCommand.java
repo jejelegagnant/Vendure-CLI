@@ -1,5 +1,7 @@
 package org.example.cli;
 
+import org.example.format.Formater;
+import org.example.format.ProductDetailsFormater;
 import org.example.graphql.ProductDetailQuery;
 import org.example.graphql.VendureClient;
 import org.example.model.ProductDetails;
@@ -17,7 +19,7 @@ public class InfoCommand implements SubCommand {
     ProductDetailQuery query = new ProductDetailQuery(slug);
     VendureClient client = parent.getClient();
     ProductDetails productDetails = client.execute(query);
-    System.out.println("Product details for " + slug);
-    System.out.println(productDetails);
+    Formater<ProductDetails> detailsFormater = new ProductDetailsFormater();
+    System.out.println(detailsFormater.format(productDetails));
   }
 }

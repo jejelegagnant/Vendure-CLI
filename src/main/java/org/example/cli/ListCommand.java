@@ -26,7 +26,7 @@ public class ListCommand implements SubCommand {
 
     List<Product> products = fetchProducts();
 
-    Formater activeFormater =
+    Formater<List<Product>> activeFormater =
         (this.format == OutputFormat.JSON) ? new JsonFormater() : new TableFormater();
 
     System.out.println(activeFormater.format(products));
