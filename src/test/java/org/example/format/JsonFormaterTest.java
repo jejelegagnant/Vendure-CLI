@@ -27,4 +27,39 @@ public class JsonFormaterTest {
     assertTrue(result.contains("\"price\" : 15.0"));
     assertTrue(result.startsWith("[ {"));
   }
+
+  @Test
+  public void testNullListReturnsEmptyJsonArray() {
+    JsonFormater formater = new JsonFormater();
+    String result = formater.format(null);
+    assertEquals("[]", result);
+  }
+
+  @Test
+  public void testFormatThrowsRuntimeExceptionOnSerializationError() {
+    JsonFormater formater = new JsonFormater();
+
+    // Create an anonymous, faulty list implementation
+    List<Product> poisonList =
+        new java.util.AbstractList<>() {
+          @Override
+          public Product get(int index) {
+            // Jackson will call this method during serialization, triggering the error
+            throw new UnsupportedOperationException("Simulated error to force the catch block");
+          }
+
+          @Override
+          public int size() {
+            // Essential so that isEmpty() returns false and passes the initial check
+            return 1;
+          }
+        };
+
+    // Verify that the RuntimeException is correctly thrown
+    RuntimeException exception =
+        assertThrows(RuntimeException.class, () -> formater.format(poisonList));
+
+    // Ensure the exception caught is indeed the one from our catch block
+    assertEquals("JSON formating error", exception.getMessage());
+  }
 }
