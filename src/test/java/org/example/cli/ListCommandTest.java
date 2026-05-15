@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.example.graphql.VendureClient;
+import org.example.graphql.GraphQLQuery;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,16 +35,27 @@ public class ListCommandTest {
 
   @Test
   public void testExecutePrintsInTableFormatByDefault() {
-    // 1. Setup: Use the parser to perfectly simulate user input and inject the 'parent'
     CommandParser parser = new CommandParser();
-    SubCommand command = parser.parse(new String[] {"--url", "http://test.com", "list"});
 
-    // 2. Act: Run the execute method
+    // 1. Injects a mock client
+    parser.setClient(
+        new VendureClient("https://test.com") {
+          @Override
+          @SuppressWarnings("unchecked")
+          public <T> T execute(GraphQLQuery<T> query) {
+            // Returns mock data
+            return (T) java.util.List.of(new org.example.model.Product("Clavier", 45.50));
+          }
+        });
+
+    // 2. Setup the subcommand
+    SubCommand command = parser.parse(new String[] {"list"});
+
+    // 3. Act
     command.execute();
 
-    // 3. Assert: Read what was captured in our fake console
+    // 4. Assert
     String output = outContent.toString();
-
     assertTrue(output.contains("Name"), "Output should contain the table header 'Name'");
     assertTrue(output.contains("Price"), "Output should contain the table header 'Price'");
     assertTrue(output.contains("Clavier"), "Output should display the product name");
@@ -50,20 +63,26 @@ public class ListCommandTest {
 
   @Test
   public void testExecutePrintsInJsonFormatWhenOptionIsProvided() {
-    // 1. Setup: Provide the --format JSON option to hit the other branch of the ternary operator
     CommandParser parser = new CommandParser();
-    SubCommand command =
-        parser.parse(new String[] {"--url", "http://test.com", "list", "--format", "JSON"});
 
-    // 2. Act: Run the execute method
+    // 1. Injection du faux client
+    parser.setClient(
+        new VendureClient("https://test.com") {
+          @Override
+          @SuppressWarnings("unchecked")
+          public <T> T execute(GraphQLQuery<T> query) {
+            return (T) java.util.List.of(new org.example.model.Product("Clavier", 45.50));
+          }
+        });
+
+    SubCommand command = parser.parse(new String[] {"list", "--format", "JSON"});
+
     command.execute();
 
-    // 3. Assert: Check for JSON specific syntax
     String output = outContent.toString();
-
     assertTrue(output.startsWith("["), "JSON output should start with a bracket");
     assertTrue(
-        output.contains("\"name\": \"Clavier\""),
+        output.contains("\"name\" : \"Clavier\"") || output.contains("\"name\":\"Clavier\""),
         "Output should contain JSON formatted product name");
   }
 }

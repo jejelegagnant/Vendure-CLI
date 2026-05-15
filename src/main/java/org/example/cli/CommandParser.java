@@ -42,4 +42,9 @@ public class CommandParser {
     }
     return client;
   }
+
+  // overrides the http client, for testing purposes
+  public void setClient(VendureClient client) {
+    this.client = client;
+  }
 }

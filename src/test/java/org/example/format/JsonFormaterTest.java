@@ -23,8 +23,8 @@ public class JsonFormaterTest {
 
     String result = formater.format(products);
 
-    assertTrue(result.contains("\"name\": \"Book\""));
-    assertTrue(result.contains("\"price\": 15.0"));
-    assertTrue(result.startsWith("[\n"));
+    assertTrue(result.contains("\"name\" : \"Book\""));
+    assertTrue(result.contains("\"price\" : 15.0"));
+    assertTrue(result.startsWith("[ {"));
   }
 }

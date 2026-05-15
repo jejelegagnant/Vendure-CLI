@@ -2,6 +2,7 @@ package org.example.cli;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.example.graphql.VendureClient;
 import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
 
@@ -66,5 +67,13 @@ public class CommandParserTest {
     parser.parse(new String[] {"--url", "http://test.ch", "list"});
 
     assertEquals("http://test.ch", parser.getUrl());
+  }
+
+  @Test
+  public void vendureClientIsUnique() {
+    CommandParser parser = new CommandParser();
+    VendureClient client1 = parser.getClient();
+    VendureClient client2 = parser.getClient();
+    assertSame(client1, client2);
   }
 }
