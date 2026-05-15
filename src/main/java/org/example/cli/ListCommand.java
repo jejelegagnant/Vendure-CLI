@@ -24,7 +24,7 @@ public class ListCommand implements SubCommand {
 
     String url = parent.getUrl();
 
-    List<Product> products = fetchProducts(url);
+    List<Product> products = fetchProducts();
 
     Formater activeFormater =
         (this.format == OutputFormat.JSON) ? new JsonFormater() : new TableFormater();
@@ -32,7 +32,7 @@ public class ListCommand implements SubCommand {
     System.out.println(activeFormater.format(products));
   }
 
-  List<Product> fetchProducts(String url) {
+  List<Product> fetchProducts() {
     // 1. Client is in CommandParser
     VendureClient client = parent.getClient();
 

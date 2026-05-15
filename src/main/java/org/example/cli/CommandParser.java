@@ -6,7 +6,7 @@ import picocli.CommandLine;
 @CommandLine.Command(
     name = "cli",
     description = "CLI for Vendure",
-    subcommands = {ListCommand.class, CartCommand.class})
+    subcommands = {ListCommand.class, CartCommand.class, InfoCommand.class})
 public class CommandParser {
 
   @CommandLine.Option(
