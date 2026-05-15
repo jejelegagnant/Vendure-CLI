@@ -58,20 +58,20 @@ public class ProductListQueryTest {
     ProductListQuery query = new ProductListQuery();
     String jsonMalformedResponse =
         """
-              {
-                "data": {
-                  "products": {
-                    "items": [
-                      {
-                        "name": "Key
-                        board",
-                        "variants": [ { "price": 4550 } ]
-                      }
-                    ]
-                  }
+        {
+          "data": {
+            "products": {
+              "items": [
+                {
+                  "name": "Key
+                  board",
+                  "variants": [ { "price": 4550 } ]
                 }
-              }
-              """;
+              ]
+            }
+          }
+        }
+        """;
     assertThrows(RuntimeException.class, () -> query.parseResponse(jsonMalformedResponse));
   }
 

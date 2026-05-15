@@ -13,8 +13,8 @@ public class ProductDetailQueryTest {
 
     // Verify that the slug is at the right place
     String expected =
-        "{ \"query\": \"query { product(slug: \\\"aloe-vera\\\") { id name description variants { sku name"
-            + " price stockLevel } } }\" }";
+        "{ \"query\": \"query { product(slug: \\\"aloe-vera\\\") { id name description variants {"
+            + " sku name price stockLevel } } }\" }";
     assertEquals(expected, query.getQueryPayload());
   }
 
@@ -65,24 +65,24 @@ public class ProductDetailQueryTest {
     ProductDetailQuery query = new ProductDetailQuery("any-slug");
     String invalidJsonResponse =
         """
-              {
-                "data": {
-                  product: {
-                    "id": "38",
-                    "name": "Aloe Vera",
-                    "description": "Decorative Aloe vera makes a lovely house plant.",
-                    "variants": [
-                      {
-                        "sku": "A44352",
-                        "name": "Aloe Vera",
-                        "price": 699,
-                        "stockLevel": "IN_STOCK"
-                      }
-                    ]
-                  }
+        {
+          "data": {
+            product: {
+              "id": "38",
+              "name": "Aloe Vera",
+              "description": "Decorative Aloe vera makes a lovely house plant.",
+              "variants": [
+                {
+                  "sku": "A44352",
+                  "name": "Aloe Vera",
+                  "price": 699,
+                  "stockLevel": "IN_STOCK"
                 }
-              }
-              """;
+              ]
+            }
+          }
+        }
+        """;
     assertThrows(RuntimeException.class, () -> query.parseResponse(invalidJsonResponse));
   }
 }
